@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Concurso de Orquídeas de Cobán</title>
+  <style>
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 240 10% 3.9%;
+      --card: 0 0% 100%;
+      --card-foreground: 240 10% 3.9%;
+      --popover: 0 0% 100%;
+      --popover-foreground: 240 10% 3.9%;
+      --primary: 240 5.9% 10%;
+      --primary-foreground: 0 0% 98%;
+      --secondary: 240 4.8% 95.9%;
+      --secondary-foreground: 240 5.9% 10%;
+      --muted: 240 4.8% 95.9%;
+      --muted-foreground: 240 3.8% 45%;
+      --accent: 240 4.8% 95.9%;
+      --accent-foreground: 240 5.9% 10%;
+      --destructive: 0 72% 51%;
+      --destructive-foreground: 0 0% 98%;
+      --border: 240 5.9% 90%;
+      --input: 240 5.9% 90%;
+      --ring: 240 5.9% 10%;
+      --chart-1: 173 58% 39%;
+      --chart-2: 12 76% 61%;
+      --chart-3: 197 37% 24%;
+      --chart-4: 43 74% 66%;
+      --chart-5: 27 87% 67%;
+      --radius: 0.5rem;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    .bg-primary {
+      background-color: hsl(var(--primary));
+    }
+    .text-primary-foreground {
+      color: hsl(var(--primary-foreground));
+    }
+    .bg-card {
+      background-color: hsl(var(--card));
+    }
+    .text-muted-foreground {
+      color: hsl(var(--muted-foreground));
+    }
+    .shadow {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .rounded-lg {
+      border-radius: var(--radius);
+    }
+    .min-h-screen {
+      min-height: 100vh;
+    }
+    .flex {
+      display: flex;
+    }
+    .flex-col {
+      flex-direction: column;
+    }
+    .flex-1 {
+      flex: 1;
+    }
+    .justify-between {
+      justify-content: space-between;
+    }
+    .items-center {
+      align-items: center;
+    }
+    .text-center {
+      text-align: center;
+    }
+    .text-left {
+      text-align: left;
+    }
+    .text-right {
+      text-align: right;
+    }
+    .py-4 {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+    .py-8 {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+    .px-6 {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+    .mb-2 {
+      margin-bottom: 0.5rem;
+    }
+    .mb-4 {
+      margin-bottom: 1rem;
+    }
+    .mb-8 {
+      margin-bottom: 2rem;
+    }
+    .mt-4 {
+      margin-top: 1rem;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .text-2xl {
+      font-size: 1.5rem;
+    }
+    .text-3xl {
+      font-size: 1.875rem;
+    }
+    .text-xl {
+      font-size: 1.25rem;
+    }
+    .font-bold {
+      font-weight: 700;
+    }
+    .space-x-4 > *:not(:last-child) {
+      margin-right: 1rem;
+    }
+    .grid {
+      display: grid;
+    }
+    .grid-cols-1 {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    .sm\:grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .md\:grid-cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .lg\:grid-cols-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .gap-4 {
+      gap: 1rem;
+    }
+    .gap-6 {
+      gap: 1.5rem;
+    }
+    .w-full {
+      width: 100%;
+    }
+    .h-48 {
+      height: 12rem;
+    }
+    .h-32 {
+      height: 8rem;
+    }
+    .object-cover {
+      object-fit: cover;
+    }
+    .rounded-lg {
+      border-radius: 0.5rem;
+    }
+    .cursor-pointer {
+      cursor: pointer;
+    }
+    .hover\:text-primary:hover {
+      color: hsl(var(--primary));
+    }
+    .hover\:bg-primary\/90:hover {
+      background-color: hsla(var(--primary), 0.9);
+    }
+    .focus-visible\:ring-2:focus-visible {
+      box-shadow: 0 0 0 0.25rem hsl(var(--ring));
+    }
+    .focus-visible\:ring-ring:focus-visible {
+      box-shadow: 0 0 0 0.25rem hsl(var(--ring));
+    }
+    .focus-visible\:ring-offset-2:focus-visible {
+      margin: 0.25rem;
+    }
+    .disabled\:pointer-events-none:disabled {
+      pointer-events: none;
+    }
+    .disabled\:opacity-50:disabled {
+      opacity: 0.5;
+    }
+    .inline-flex {
+      display: inline-flex;
+    }
+    .items-center {
+      align-items: center;
+    }
+    .justify-center {
+      justify-content: center;
+    }
+    .whitespace-nowrap {
+      white-space: nowrap;
+    }
+    .rounded-md {
+      border-radius: 0.375rem;
+    }
+    .text-sm {
+      font-size: 0.875rem;
+    }
+    .ring-offset-background {
+      box-shadow: 0 0 0 0.25rem hsl(var(--background));
+    }
+    .transition-colors {
+      transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+      transition-duration: 150ms;
+      transition-timing-function: ease-in-out;
+    }
+    .focus-visible\:outline-none:focus-visible {
+      outline: none;
+    }
+    .bg-primary {
+      background-color: hsl(var(--primary));
+    }
+    .text-primary-foreground {
+      color: hsl(var(--primary-foreground));
+    }
+    .hover\:bg-primary\/90:hover {
+      background-color: hsla(var(--primary), 0.9);
+    }
+    .h-10 {
+      height: 2.5rem;
+    }
+    .px-4 {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    .py-2 {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+    .mt-4 {
+      margin-top: 1rem;
+    }
+    .w-full {
+      width: 100%;
+    }
+    .text-left {
+      text-align: left;
+    }
+    .text-right {
+      text-align: right;
+    }
+    .pb-2 {
+      padding-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="flex flex-col min-h-screen bg-background text-foreground">
+    <header class="bg-primary text-primary-foreground py-4 px-6 shadow">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-2xl font-bold">Concurso de Orquídeas de Cobán</h1>
+        <nav>
+          <ul class="flex space-x-4">
+            <li><a class="hover:text-primary" href="#">Inicio</a></li>
+            <li><a class="hover:text-primary" href="#">Galería</a></li>
+            <li><a class="hover:text-primary" href="#">Votar</a></li>
+            <li><a class="hover:text-primary" href="#">Leaderboard</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="flex-1 container mx-auto py-8 px-6">
+      <section class="mb-8">
+        <h2 class="text-3xl font-bold mb-4">Bienvenidos al Concurso de Orquídeas de Cobán</h2>
+        <p class="text-muted-foreground">Este concurso tiene como objetivo celebrar la belleza y diversidad de las orquídeas de Cobán, Guatemala. Los participantes han presentado sus mejores especímenes y ahora es tu turno de votar por tu favorita.</p>
+      </section>
+      <section id="gallery" class="mb-8">
+        <h2 class="text-3xl font-bold mb-4">Galería de Orquídeas</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div class="bg-card rounded-lg overflow-hidden shadow-lg">
+            <img src="/placeholder.svg" alt="Orquídea 1" width="300" height="300" class="w-full h-48 object-cover" />
+            <div class="p-4">
+              <h3 class="text-xl font-bold mb-2">Orquídea 1</h3>
+              <p class="text-muted-foreground">Descripción de la orquídea 1</p>
+            </div>
+          </div>
+          <div class="bg-card rounded-lg overflow-hidden shadow-lg">
+            <img src="/placeholder.svg" alt="Orquídea 2" width="300" height="300" class="w-full h-48 object-cover" />
+            <div class="p-4">
+              <h3 class="text-xl font-bold mb-2">Orquídea 2</h3>
+              <p class="text-muted-foreground">Descripción de la orquídea 2</p>
+            </div>
+          </div>
+          <div class="bg-card rounded-lg overflow-hidden shadow-lg">
+            <img src="/placeholder.svg" alt="Orquídea 3" width="300" height="300" class="w-full h-48 object-cover" />
+            <div class="p-4">
+              <h3 class="text-xl font-bold mb-2">Orquídea 3</h3>
+              <p class="text-muted-foreground">Descripción de la orquídea 3</p>
+            </div>
+          </div>
+          <div class="bg-card rounded-lg overflow-hidden shadow-lg">
+            <img src="/placeholder.svg" alt="Orquídea 4" width="300" height="300" class="w-full h-48 object-cover" />
+            <div class="p-4">
+              <h3 class="text-xl font-bold mb-2">Orquídea 4</h3>
+              <p class="text-muted-foreground">Descripción de la orquídea 4</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="vote" class="mb-8">
+        <h2 class="text-3xl font-bold mb-4">Vota por tu Orquídea Favorita</h2>
+        <form class="bg-card rounded-lg shadow-lg p-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div>
+              <input type="radio" id="orchid1" name="orchid" value="orchid1" />
+              <label for="orchid1" class="flex flex-col items-center cursor-pointer">
+                <img src="/placeholder.svg" alt="Orquídea 1" width="150" height="150" class="w-full h-32 object-cover rounded-lg mb-2" />
+                <span>Orquídea 1</span>
+              </label>
+            </div>
+            <div>
+              <input type="radio" id="orchid2" name="orchid" value="orchid2" />
+              <label for="orchid2" class="flex flex-col items-center cursor-pointer">
+                <img src="/placeholder.svg" alt="Orquídea 2" width="150" height="150" class="w-full h-32 object-cover rounded-lg mb-2" />
+                <span>Orquídea 2</span>
+              </label>
+            </div>
+            <div>
+              <input type="radio" id="orchid3" name="orchid" value="orchid3" />
+              <label for="orchid3" class="flex flex-col items-center cursor-pointer">
+                <img src="/placeholder.svg" alt="Orquídea 3" width="150" height="150" class="w-full h-32 object-cover rounded-lg mb-2" />
+                <span>Orquídea 3</span>
+              </label>
+            </div>
+            <div>
+              <input type="radio" id="orchid4" name="orchid" value="orchid4" />
+              <label for="orchid4" class="flex flex-col items-center cursor-pointer">
+                <img src="/placeholder.svg" alt="Orquídea 4" width="150" height="150" class="w-full h-32 object-cover rounded-lg mb-2" />
+                <span>Orquídea 4</span>
+              </label>
+            </div>
+          </div>
+          <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 mt-4 w-full" type="submit">Votar</button>
+        </form>
+      </section>
+      <section id="leaderboard" class="mb-8">
+        <h2 class="text-3xl font-bold mb-4">Leaderboard</h2>
+        <div class="bg-card rounded-lg shadow-lg p-6">
+          <table class="w-full">
+            <thead>
+              <tr>
+                <th class="text-left pb-2">Orquídea</th>
+                <th class="text-right pb-2">Votos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="py-2">Orquídea 1</td>
+                <td class="text-right py-2">120</td>
+              </tr>
+              <tr>
+                <td class="py-2">Orquídea 2</td>
+                <td class="text-right py-2">90</td>
+              </tr>
+              <tr>
+                <td class="py-2">Orquídea 3</td>
+                <td class="text-right py-2">80</td>
+              </tr>
+              <tr>
+                <td class="py-2">Orquídea 4</td>
+                <td class="text-right py-2">60</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-primary text-primary-foreground py-4 px-6 shadow">
+      <div class="container mx-auto text-center">
+        <p>© 2023 Concurso de Orquídeas de Cobán. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
